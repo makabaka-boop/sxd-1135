@@ -81,7 +81,19 @@ def get_column_defs():
          'cellEditor': 'agSelectCellEditor', 'cellEditorParams': {'values': COST_TYPES}},
         {'headerName': '项目', 'field': '项目', 'width': 130, 'editable': True},
         {'headerName': '金额', 'field': '金额', 'width': 120, 'editable': True, 
-         'type': 'numericColumn', 'valueFormatter': {'function': "params.value ? '¥' + Number(params.value).toLocaleString() : ''"}},
+         'type': 'numericColumn',
+         'valueFormatter': {'function': "params.value || params.value === 0 ? '¥' + Number(params.value).toLocaleString() : ''"},
+         'valueParser': {'function': """
+             const newValue = params.newValue;
+             if (newValue === '' || newValue === null || newValue === undefined) {
+                 return 0;
+             }
+             const num = Number(newValue);
+             if (isNaN(num) || num < 0) {
+                 return params.oldValue || 0;
+             }
+             return Math.round(num * 100) / 100;
+         """}},
         {'headerName': '栏区', 'field': '栏区', 'width': 90, 'editable': True,
          'cellEditor': 'agSelectCellEditor', 'cellEditorParams': {'values': BARNS}},
         {'headerName': '责任组', 'field': '责任组', 'width': 90, 'editable': True,
@@ -90,8 +102,16 @@ def get_column_defs():
          'cellEditor': 'agLargeTextCellEditor',
          'cellEditorParams': {'maxLength': 500, 'rows': 6},
          'tooltipField': '备注',
-         'autoHeight': True,
-         'wrapText': True},
+         'autoHeight': False,
+         'wrapText': True,
+         'cellRenderer': {'function': """
+             if (!params.value) return '';
+             const maxLength = 25;
+             const displayText = params.value.length > maxLength 
+                 ? params.value.substring(0, maxLength) + '...' 
+                 : params.value;
+             return '<span title="' + params.value.replace(/"/g, '&quot;') + '">' + displayText + '</span>';
+         """}},
         {'headerName': '状态', 'field': '状态', 'width': 100, 'editable': True,
          'cellEditor': 'agSelectCellEditor', 'cellEditorParams': {'values': ['待复核', '已确认', '正常', '有异议']}},
         {'headerName': '是否异常', 'field': '是否异常', 'width': 90, 'editable': False},

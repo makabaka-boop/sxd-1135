@@ -89,18 +89,25 @@ def register_callbacks(app):
          Input('filter-abnormal-switch', 'value'),
          Input('reset-col-widths-btn', 'n_clicks'),
          Input('role-selector', 'value')],
-        [State('session-id', 'data')],
+        [State('session-id', 'data'),
+         State('col-widths-local', 'data')],
     )
-    def update_table(data, filter_abnormal, reset_clicks, role, session_id):
+    def update_table(data, filter_abnormal, reset_clicks, role, session_id, local_widths):
         if data is None or session_id is None:
             return html.Div('加载中...')
         
         ctx = callback_context.triggered_id
         
-        col_widths = session_cache.get_column_widths(session_id) or get_default_col_widths()
+        default_widths = get_default_col_widths()
+        
         if ctx == 'reset-col-widths-btn':
-            col_widths = get_default_col_widths()
+            col_widths = default_widths
             session_cache.update_column_widths(session_id, col_widths)
+        else:
+            if local_widths and isinstance(local_widths, dict) and len(local_widths) > 0:
+                col_widths = local_widths
+            else:
+                col_widths = session_cache.get_column_widths(session_id) or default_widths
         
         df = records_to_dataframe(data)
         if filter_abnormal:
@@ -133,6 +140,15 @@ def register_callbacks(app):
         if row_data is None or session_id is None:
             return no_update, '', ''
         
+        for row in row_data:
+            try:
+                amount = float(row.get('金额', 0))
+                if amount < 0:
+                    amount = 0
+                row['金额'] = round(amount, 2)
+            except (ValueError, TypeError):
+                row['金额'] = 0
+        
         df = records_to_dataframe(row_data)
         df = detect_abnormal(df)
         records = dataframe_to_records(df)
@@ -141,14 +157,16 @@ def register_callbacks(app):
         return records, '✅ 已自动保存', 'mt-2 text-success'
     
     @app.callback(
-        Output('main-table', 'columnState'),
+        [Output('col-widths-local', 'data'),
+         Output('column-widths-store', 'data')],
         Input('main-table', 'columnState'),
-        State('session-id', 'data'),
+        [State('session-id', 'data'),
+         State('col-widths-local', 'data')],
         prevent_initial_call=True,
     )
-    def save_column_widths(column_state, session_id):
+    def save_column_widths(column_state, session_id, existing_local):
         if column_state is None or session_id is None:
-            return no_update
+            return no_update, no_update
         
         widths = {}
         for col in column_state:
@@ -157,8 +175,19 @@ def register_callbacks(app):
         
         if widths:
             session_cache.update_column_widths(session_id, widths)
+            return widths, widths
         
-        return no_update
+        return no_update, no_update
+    
+    @app.callback(
+        Output('col-widths-local', 'data', allow_duplicate=True),
+        Input('reset-col-widths-btn', 'n_clicks'),
+        prevent_initial_call=True,
+    )
+    def reset_local_column_widths(n_clicks):
+        if n_clicks is None:
+            return no_update
+        return {}
     
     @app.callback(
         [Output('summary-cards-container', 'children'),

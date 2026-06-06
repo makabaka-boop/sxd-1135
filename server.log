@@ -1,0 +1,63 @@
+Importing app...
+App imported successfully
+Starting server on port 18101...
+Dash is running on http://127.0.0.1:18101/
+
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:18101
+[33mPress CTRL+C to quit[0m
+127.0.0.1 - - [06/Jun/2026 21:20:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/deps/polyfill@7.v2_18_2m1780750106.12.1.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/deps/react-dom@16.v2_18_2m1780750106.14.0.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/deps/react@16.v2_18_2m1780750106.14.0.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/deps/prop-types@15.v2_18_2m1780750106.8.1.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash_bootstrap_components/_components/dash_bootstrap_components.v1_7_1m1780750107.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash_ag_grid/dash_ag_grid.v31_3_1m1780750107.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dash-renderer/build/dash_renderer.v2_18_2m1780750106.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dcc/dash_core_components.v2_14_3m1780750106.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dcc/dash_core_components-shared.v2_14_3m1780750106.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/html/dash_html_components.v2_0_20m1780750106.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dash_table/bundle.v5_2_13m1780750106.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-layout HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-dependencies HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /@vite/client HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dcc/async-upload.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "[35m[1mPOST /_dash-update-component HTTP/1.1[0m" 204 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash/dcc/async-graph.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/dash_ag_grid/async-community.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "GET /_dash-component-suites/plotly/package_data/plotly.min.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:57] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:58] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:58] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:58] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:20:58] "[35m[1mPOST /_dash-update-component HTTP/1.1[0m" 204 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "GET /_dash-layout HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "GET /_dash-dependencies HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "GET /@vite/client HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "[36mGET /_dash-component-suites/dash/dcc/async-upload.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "[36mGET /_dash-component-suites/dash_ag_grid/async-community.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "[35m[1mPOST /_dash-update-component HTTP/1.1[0m" 204 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "[36mGET /_dash-component-suites/dash/dcc/async-graph.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "[36mGET /_dash-component-suites/plotly/package_data/plotly.min.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:21:39] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:21:40] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "GET /_dash-layout HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "GET /_dash-dependencies HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "GET /@vite/client HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "[36mGET /_dash-component-suites/dash/dcc/async-upload.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "[35m[1mPOST /_dash-update-component HTTP/1.1[0m" 204 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "[36mGET /_dash-component-suites/dash/dcc/async-graph.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "[36mGET /_dash-component-suites/dash_ag_grid/async-community.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "[36mGET /_dash-component-suites/plotly/package_data/plotly.min.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "POST /_dash-update-component HTTP/1.1" 200 -
+127.0.0.1 - - [06/Jun/2026 21:25:49] "POST /_dash-update-component HTTP/1.1" 200 -

@@ -19,6 +19,7 @@ def create_editable_table(table_id: str, data: list = None, column_widths: dict 
         'sortable': True,
         'filter': True,
         'minWidth': 60,
+        'suppressSizeToFit': True,
     }
     
     return dag.AgGrid(
@@ -34,16 +35,10 @@ def create_editable_table(table_id: str, data: list = None, column_widths: dict 
             'domLayout': 'normal',
             'rowHeight': 48,
             'headerHeight': 48,
+            'suppressColumnVirtualisation': True,
         },
         style={'height': '600px', 'width': '100%'},
         className='ag-theme-alpine',
-        columnSize='responsiveSizeToFit',
-        columnSizeOptions={
-            'skipHeader': False,
-            'columnLimits': [
-                {'key': '备注', 'minWidth': 150, 'maxWidth': 500},
-            ]
-        },
         getRowStyle={
             'styleConditions': [
                 {
@@ -61,7 +56,8 @@ def create_editable_table(table_id: str, data: list = None, column_widths: dict 
             ]
         },
         persisted_props=['columnState'],
-        persistence_type='session',
+        persistence=True,
+        persistence_type='local',
     )
 
 
@@ -164,4 +160,6 @@ def get_layout():
         dcc.Store(id='session-id'),
         dcc.Store(id='current-data'),
         dcc.Store(id='column-widths-store'),
+        dcc.Store(id='col-widths-local', storage_type='local'),
+        html.Div(id='dummy-output', style={'display': 'none'}),
     ])
